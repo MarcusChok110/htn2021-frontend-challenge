@@ -6,10 +6,11 @@ import {
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 import React, { useContext, useEffect } from 'react';
-import EventCard from '../../components/EventCard';
+import EventCard from '../../components/Misc/EventCard';
 import useTextField from '../../components/Form/useTextField';
 import EventContext from '../../contexts/EventContext';
 import UserContext from '../../contexts/UserContext';
+import includesLowerCase from '../../utils/helpers/includesLowerCase';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -27,7 +28,7 @@ const Home: React.FC = () => {
   const filteredEvents = events
     .sort((a, b) => a.start_time - b.start_time)
     .filter((event) => {
-      return event.name.toLowerCase().includes(search.toLowerCase());
+      return includesLowerCase([event.name, event.description], search);
     });
 
   useEffect(() => {
@@ -64,9 +65,8 @@ const Home: React.FC = () => {
             ) {
               const { id, name, description, start_time } = event;
               return (
-                <Grid item>
+                <Grid item key={event.id}>
                   <EventCard
-                    key={event.id}
                     id={id}
                     name={name}
                     description={description}
