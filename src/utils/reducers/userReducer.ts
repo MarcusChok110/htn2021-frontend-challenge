@@ -1,13 +1,13 @@
-export const USER_ACTIONS = {
+export const userActions = {
   LOGIN: 'LOGIN',
   LOGOUT: 'LOGOUT',
 };
 
 function userReducer(state: boolean, action: string) {
   switch (action) {
-    case USER_ACTIONS.LOGIN:
+    case userActions.LOGIN:
       return true;
-    case USER_ACTIONS.LOGOUT:
+    case userActions.LOGOUT:
       return false;
     default:
       return state;
