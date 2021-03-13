@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import fetchEvents from './api/fetchEvents';
+import fetchEvents from './utils/api/fetchEvents';
 import EventContext from './contexts/EventContext';
 import Routes from './routes';
 import { TEndpointResponse } from './types/events';
