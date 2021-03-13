@@ -5,7 +5,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import EventCard from '../../components/Misc/EventCard';
 import useTextField from '../../components/Form/useTextField';
 import EventContext from '../../contexts/EventContext';
@@ -34,8 +34,6 @@ const Home: React.FC = () => {
     'none'
   );
 
-  console.log(filter);
-
   // sort by start_time and filter by search input
   const filteredEvents = events
     .sort((a, b) => a.start_time - b.start_time)
@@ -45,10 +43,6 @@ const Home: React.FC = () => {
     .filter((event) => {
       return filter === 'none' || event.event_type === filter;
     });
-
-  useEffect(() => {
-    console.log(events);
-  }, [events]);
 
   return (
     <div>

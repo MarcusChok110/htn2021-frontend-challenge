@@ -82,38 +82,31 @@ const EventPage: React.FC = () => {
         })`}</Typography>
       </Box>
       <Paper elevation={3}>
-        <Typography
-          gutterBottom
-          variant="body1"
-          color="textPrimary"
-          component="p"
-        >
-          <List>
-            {description && (
-              <>
-                <ListItem>
-                  <ListItemText>{description}</ListItemText>
-                </ListItem>
-                <Divider />
-              </>
-            )}
-            {public_url && (
+        <List>
+          {description && (
+            <>
               <ListItem>
-                <ListItemText>
-                  Learn More: <Link href={public_url}>{public_url}</Link>
-                </ListItemText>
+                <ListItemText>{description}</ListItemText>
               </ListItem>
-            )}
-            {isLoggedIn && (
-              <ListItem>
-                <ListItemText>
-                  Super Secret Hacker Link:{' '}
-                  <Link href={private_url}>{private_url}</Link>
-                </ListItemText>
-              </ListItem>
-            )}
-          </List>
-        </Typography>
+              <Divider />
+            </>
+          )}
+          {public_url && (
+            <ListItem>
+              <ListItemText>
+                Learn More: <Link href={public_url}>{public_url}</Link>
+              </ListItemText>
+            </ListItem>
+          )}
+          {isLoggedIn && (
+            <ListItem>
+              <ListItemText>
+                Super Secret Hacker Link:{' '}
+                <Link href={private_url}>{private_url}</Link>
+              </ListItemText>
+            </ListItem>
+          )}
+        </List>
       </Paper>
       <List>
         <ListItem>
