@@ -75,15 +75,9 @@ const Home: React.FC = () => {
               (event.permission === 'private' && isLoggedIn) ||
               event.permission === 'public'
             ) {
-              const { id, name, description, start_time } = event;
               return (
                 <Grid item key={event.id}>
-                  <EventCard
-                    id={id}
-                    name={name}
-                    description={description}
-                    start_time={start_time}
-                  />
+                  <EventCard event={event} />
                 </Grid>
               );
             }

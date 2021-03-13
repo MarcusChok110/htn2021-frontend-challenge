@@ -9,6 +9,9 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { TEvent } from '../../types/events';
+import eventTypeToTitleCase from '../../utils/helpers/eventTypeToTitleCase';
+import toDateAndLocaleTimeString from '../../utils/helpers/toDateAndLocaleTimeString';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,14 +20,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface Props {
-  id: number;
-  name: string;
-  start_time: number;
-  description?: string;
+  event: TEvent;
 }
 
-const EventCard: React.FC<Props> = ({ id, name, start_time, description }) => {
-  const date = new Date(start_time).toDateString();
+const EventCard: React.FC<Props> = ({ event }) => {
+  const { id, name, start_time, description, event_type } = event;
+  const date = new Date(start_time);
   const classes = useStyles();
   const history = useHistory();
 
@@ -36,7 +37,9 @@ const EventCard: React.FC<Props> = ({ id, name, start_time, description }) => {
             {name}
           </Typography>
           <Typography className={classes.root} color="textSecondary">
-            {date}
+            {`${eventTypeToTitleCase(event_type)} — ${toDateAndLocaleTimeString(
+              date
+            )}`}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {description ?? null}
