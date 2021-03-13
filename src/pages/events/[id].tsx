@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Box,
   Divider,
   Link,
   List,
@@ -60,15 +61,26 @@ const EventPage: React.FC = () => {
 
   return (
     <>
-      <Typography variant="h3" className={classes.title}>
-        {name}
-      </Typography>
-      <Typography
-        gutterBottom
-        color="textSecondary"
-      >{`${toDateAndLocaleTimeString(startDate)} - ${toDateAndLocaleTimeString(
-        endDate
-      )} (${Intl.DateTimeFormat().resolvedOptions().timeZone})`}</Typography>
+      <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
+        <Typography variant="h3" className={classes.title}>
+          {name}
+        </Typography>
+      </Box>
+      <Box
+        display={'flex'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        marginBottom={2}
+      >
+        <Typography
+          gutterBottom
+          color="textSecondary"
+        >{`${toDateAndLocaleTimeString(
+          startDate
+        )} - ${toDateAndLocaleTimeString(endDate)} (${
+          Intl.DateTimeFormat().resolvedOptions().timeZone
+        })`}</Typography>
+      </Box>
       <Paper elevation={3}>
         <Typography
           gutterBottom
