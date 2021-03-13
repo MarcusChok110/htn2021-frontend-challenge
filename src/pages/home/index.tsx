@@ -11,24 +11,39 @@ import useTextField from '../../components/Form/useTextField';
 import EventContext from '../../contexts/EventContext';
 import UserContext from '../../contexts/UserContext';
 import includesLowerCase from '../../utils/helpers/includesLowerCase';
+import useSelect from '../../components/Form/useSelect';
+import { eventTitles } from '../../utils/helpers/eventTypeToTitleCase';
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(2, 0, 0),
   },
 }));
+
+const filterOptions = [{ value: 'none', label: 'None' }, ...eventTitles];
 
 const Home: React.FC = () => {
   const events = useContext(EventContext);
   const [isLoggedIn] = useContext(UserContext);
   const classes = useStyles();
   const [search, searchProps, SearchInput] = useTextField('Search Events');
+  const [filter, filterProps, FilterSelect] = useSelect(
+    'Filter Events',
+    'filter-select',
+    filterOptions,
+    'none'
+  );
+
+  console.log(filter);
 
   // sort by start_time and filter by search input
   const filteredEvents = events
     .sort((a, b) => a.start_time - b.start_time)
     .filter((event) => {
       return includesLowerCase([event.name, event.description], search);
+    })
+    .filter((event) => {
+      return filter === 'none' || event.event_type === filter;
     });
 
   useEffect(() => {
@@ -38,7 +53,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <Grid container justify="space-between" alignItems="center">
-        <Grid item>
+        <Grid item xs={12}>
           <Typography className={classes.title} variant="h2">
             Events
           </Typography>
@@ -54,6 +69,9 @@ const Home: React.FC = () => {
               ),
             }}
           />
+        </Grid>
+        <Grid item>
+          <FilterSelect {...filterProps} />
         </Grid>
       </Grid>
       <Grid container alignItems="stretch" direction="column">
