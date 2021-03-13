@@ -1,8 +1,10 @@
 import {
+  Avatar,
   Divider,
   Link,
   List,
   ListItem,
+  ListItemAvatar,
   ListItemText,
   makeStyles,
   Paper,
@@ -17,10 +19,14 @@ import UserContext from '../../contexts/UserContext';
 import findEvent from '../../utils/helpers/findEvent';
 import toDateAndLocaleTimeString from '../../utils/helpers/toDateAndLocaleTimeString';
 import eventTypeToTitleCase from '../../utils/helpers/eventTypeToTitleCase';
+import { Event, Help, RecordVoiceOver } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   title: {
     margin: theme.spacing(2, 0),
+  },
+  bgSecondary: {
+    backgroundColor: theme.palette.secondary.main + '80',
   },
 }));
 
@@ -99,6 +105,11 @@ const EventPage: React.FC = () => {
       </Paper>
       <List>
         <ListItem>
+          <ListItemAvatar>
+            <Avatar className={classes.bgSecondary}>
+              <Help />
+            </Avatar>
+          </ListItemAvatar>
           <ListItemText
             primary={<Typography variant="h6">Event Type</Typography>}
             secondary={eventTypeToTitleCase(event_type)}
@@ -106,6 +117,11 @@ const EventPage: React.FC = () => {
         </ListItem>
         {speakers.length > 0 && (
           <ListItem>
+            <ListItemAvatar>
+              <Avatar className={classes.bgSecondary}>
+                <RecordVoiceOver />
+              </Avatar>
+            </ListItemAvatar>
             <ListItemText
               primary={<Typography variant="h6">Speakers</Typography>}
               secondary={speakers.map((speaker, index) => (
@@ -119,6 +135,11 @@ const EventPage: React.FC = () => {
         )}
         {viewableRelatedEvents.length > 0 && (
           <ListItem>
+            <ListItemAvatar>
+              <Avatar className={classes.bgSecondary}>
+                <Event />
+              </Avatar>
+            </ListItemAvatar>
             <ListItemText
               primary={<Typography variant="h6">Related Events</Typography>}
               secondary={viewableRelatedEvents.map((value, index) => (
