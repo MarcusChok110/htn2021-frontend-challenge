@@ -8,6 +8,7 @@ import userReducer from './utils/reducers/userReducer';
 import UserContext from './contexts/UserContext';
 import Layout from './components/Layout';
 import { BrowserRouter } from 'react-router-dom';
+import { CssBaseline } from '@material-ui/core';
 
 const App: React.FC = () => {
   const [events, setEvents] = useState<TEndpointResponse>([]);
@@ -20,6 +21,7 @@ const App: React.FC = () => {
   return (
     <EventContext.Provider value={events}>
       <UserContext.Provider value={[isLoggedIn, dispatch]}>
+        <CssBaseline />
         <BrowserRouter>
           <Layout>
             <Routes />
