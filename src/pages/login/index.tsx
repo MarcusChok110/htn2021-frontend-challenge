@@ -28,7 +28,7 @@ const Login: React.FC = () => {
   // if user is already logged in, redirect to home page
   useEffect(() => {
     if (isLoggedIn) history.push('/');
-  }, [isLoggedIn]);
+  }, [history, isLoggedIn]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
