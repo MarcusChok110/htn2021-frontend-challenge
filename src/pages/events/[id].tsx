@@ -1,12 +1,8 @@
 import {
-  Avatar,
   Box,
   Divider,
   Link,
   List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
   makeStyles,
   Paper,
   Tooltip,
@@ -22,13 +18,11 @@ import findEvent from '../../utils/helpers/findEvent';
 import toDateAndLocaleTimeString from '../../utils/helpers/toDateAndLocaleTimeString';
 import eventTypeToTitleCase from '../../utils/helpers/eventTypeToTitleCase';
 import { Event, Help, RecordVoiceOver } from '@material-ui/icons';
+import ListText from '../../components/Misc/ListText';
 
 const useStyles = makeStyles((theme) => ({
   title: {
     margin: theme.spacing(2, 0),
-  },
-  bgSecondary: {
-    backgroundColor: theme.palette.secondary.main + '80',
   },
   profilePic: {
     maxHeight: '200px',
@@ -96,94 +90,78 @@ const EventPage: React.FC = () => {
         <List>
           {description && (
             <>
-              <ListItem>
-                <ListItemText>{description}</ListItemText>
-              </ListItem>
+              <ListText primary={description} />
               <Divider />
             </>
           )}
           {public_url && (
-            <ListItem>
-              <ListItemText>
-                Learn More: <Link href={public_url}>{public_url}</Link>
-              </ListItemText>
-            </ListItem>
+            <ListText
+              primary={
+                <>
+                  Learn More: <Link href={public_url}>{public_url}</Link>
+                </>
+              }
+            />
           )}
           {isLoggedIn && (
-            <ListItem>
-              <ListItemText>
-                Super Secret Hacker Link:{' '}
-                <Link href={private_url}>{private_url}</Link>
-              </ListItemText>
-            </ListItem>
+            <ListText
+              primary={
+                <>
+                  Super Secret Hacker Link:{' '}
+                  <Link href={private_url}>{private_url}</Link>
+                </>
+              }
+            />
           )}
         </List>
       </Paper>
       <List>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar className={classes.bgSecondary}>
-              <Help />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText
-            primary={<Typography variant="h6">Event Type</Typography>}
-            secondary={eventTypeToTitleCase(event_type)}
-          />
-        </ListItem>
+        <ListText
+          avatar={<Help />}
+          primary={<Typography variant="h6">Event Type</Typography>}
+          secondary={eventTypeToTitleCase(event_type)}
+        />
         {speakers.length > 0 && (
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar className={classes.bgSecondary}>
-                <RecordVoiceOver />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary={<Typography variant="h6">Speakers</Typography>}
-              secondary={speakers.map((speaker, index) => (
-                <span key={index}>
-                  {speaker.profile_pic ? (
-                    <Tooltip
-                      title={
-                        <img
-                          className={classes.profilePic}
-                          src={speaker.profile_pic}
-                          alt={`${speaker.name}`}
-                        />
-                      }
-                    >
-                      <span className={classes.hoverable}>{speaker.name}</span>
-                    </Tooltip>
-                  ) : (
-                    speaker.name
-                  )}
-                  {index < speakers.length - 1 ? ', ' : ''}
-                </span>
-              ))}
-            />
-          </ListItem>
+          <ListText
+            avatar={<RecordVoiceOver />}
+            primary={<Typography variant="h6">Speakers</Typography>}
+            secondary={speakers.map((speaker, index) => (
+              <span key={index}>
+                {speaker.profile_pic ? (
+                  <Tooltip
+                    title={
+                      <img
+                        className={classes.profilePic}
+                        src={speaker.profile_pic}
+                        alt={`${speaker.name}`}
+                      />
+                    }
+                  >
+                    <span className={classes.hoverable}>{speaker.name}</span>
+                  </Tooltip>
+                ) : (
+                  speaker.name
+                )}
+                {index < speakers.length - 1 ? ', ' : ''}
+              </span>
+            ))}
+          />
         )}
         {viewableRelatedEvents.length > 0 && (
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar className={classes.bgSecondary}>
-                <Event />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary={<Typography variant="h6">Related Events</Typography>}
-              secondary={viewableRelatedEvents.map((value, index) => (
-                <Link
-                  key={index}
-                  component={RouterLink}
-                  to={`/events/${value?.id}`}
-                >
-                  {value?.name}
-                  {index < viewableRelatedEvents.length - 1 ? ', ' : ''}
-                </Link>
-              ))}
-            />
-          </ListItem>
+          <ListText
+            avatar={<Event />}
+            primary={<Typography variant="h6">Related Events</Typography>}
+            secondary={viewableRelatedEvents.map((value, index) => (
+              <Link
+                key={index}
+                component={RouterLink}
+                to={`/events/${value?.id}`}
+              >
+                {value?.name}
+                {index < viewableRelatedEvents.length - 1 ? ', ' : ''}
+              </Link>
+            ))}
+          />
         )}
       </List>
     </>
