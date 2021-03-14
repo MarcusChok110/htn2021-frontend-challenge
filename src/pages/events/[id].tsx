@@ -9,6 +9,7 @@ import {
   ListItemText,
   makeStyles,
   Paper,
+  Tooltip,
   Typography,
 } from '@material-ui/core';
 import React, { useContext } from 'react';
@@ -28,6 +29,16 @@ const useStyles = makeStyles((theme) => ({
   },
   bgSecondary: {
     backgroundColor: theme.palette.secondary.main + '80',
+  },
+  profilePic: {
+    maxHeight: '200px',
+    maxWidth: '200px',
+    width: 'auto',
+    height: 'auto',
+  },
+  hoverable: {
+    cursor: 'pointer',
+    color: theme.palette.secondary.light,
   },
 }));
 
@@ -131,7 +142,21 @@ const EventPage: React.FC = () => {
               primary={<Typography variant="h6">Speakers</Typography>}
               secondary={speakers.map((speaker, index) => (
                 <span key={index}>
-                  {speaker.name}
+                  {speaker.profile_pic ? (
+                    <Tooltip
+                      title={
+                        <img
+                          className={classes.profilePic}
+                          src={speaker.profile_pic}
+                          alt={`${speaker.name}`}
+                        />
+                      }
+                    >
+                      <span className={classes.hoverable}>{speaker.name}</span>
+                    </Tooltip>
+                  ) : (
+                    speaker.name
+                  )}
                   {index < speakers.length - 1 ? ', ' : ''}
                 </span>
               ))}
