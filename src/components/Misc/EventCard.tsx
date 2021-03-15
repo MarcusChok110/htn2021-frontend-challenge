@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   // truncate description
   truncate: {
-    width: '70vw',
+    width: '60vw',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
