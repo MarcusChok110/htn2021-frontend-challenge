@@ -132,6 +132,7 @@ const EventPage: React.FC = () => {
               <span key={index}>
                 {speaker.profile_pic ? (
                   <Tooltip
+                    arrow
                     title={
                       <img
                         className={classes.profilePic}
