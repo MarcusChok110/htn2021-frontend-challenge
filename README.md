@@ -51,6 +51,25 @@ Mobile:
 
 ![Login Mobile](https://i.imgur.com/V5h0Cs0.png)
 
+Notes:
+
+- If the user inputs the wrong combination of username and password, a snackbar appears on the bottom right informing them of their error.
+- On successful login, the user is redirected to the home page.
+
+### Miscellaneous Features
+
+---
+
+- The following are miscellaneous components that can appear on multiple screens. The mobile view is shown to keep things concise, but they also appear on desktop views.
+
+#### Snackbars on bottom of screen:
+
+![Incorrect Login Snackbar](https://i.imgur.com/tlHyvWe.png)
+
+#### Profile picture tooltips on hover:
+
+![Profile Picture Tooltip](https://i.imgur.com/pwdZUuv.png)
+
 ### Local Installation
 
 ---
