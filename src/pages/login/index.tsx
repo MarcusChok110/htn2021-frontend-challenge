@@ -19,8 +19,12 @@ const Login: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
   const [isLoggedIn, dispatch] = useContext(UserContext);
+
+  // credential text fields
   const [user, userProps, UserInput] = useTextField('Username');
   const [pass, passProps, PassInput] = useTextField('Password');
+
+  // snackbar when username/password don't match
   const [openErrorSnackbar, errorSnackbarProps, ErrorSnackbar] = useSnackbar(
     'Incorrect username or password'
   );
@@ -30,6 +34,7 @@ const Login: React.FC = () => {
     if (isLoggedIn) history.push('/');
   }, [history, isLoggedIn]);
 
+  // when submit button or ENTER is clicked
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isCorrectLogin(user, pass)) dispatch(userActions.LOGIN);

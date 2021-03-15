@@ -11,9 +11,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { CssBaseline } from '@material-ui/core';
 
 const App: React.FC = () => {
+  // initialize states for contexts
   const [events, setEvents] = useState<TEndpointResponse>([]);
   const [isLoggedIn, dispatch] = useReducer(userReducer, false);
 
+  // fetch events on mount
   useEffect(() => {
     fetchEvents().then((response) => setEvents(response));
   }, []);

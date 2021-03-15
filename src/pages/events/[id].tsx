@@ -24,12 +24,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     margin: theme.spacing(2, 0),
   },
+  // class to display their profile picture at a standard size
   profilePic: {
     maxHeight: '200px',
     maxWidth: '200px',
     width: 'auto',
     height: 'auto',
   },
+  // class for speakers that have a profile picture and can be hovered
+  // over by the mouse to view a tooltip that shows their profile picture
   hoverable: {
     cursor: 'pointer',
     color: theme.palette.secondary.light,

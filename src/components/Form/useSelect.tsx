@@ -7,6 +7,13 @@ import {
 } from '@material-ui/core';
 import React, { useState } from 'react';
 
+/**
+ * Custom hook to return a select input field with common predefined props
+ * @param label Title of select input to be displayed
+ * @param id HTML id attribute of input
+ * @param options options of select as an array of {value, label}
+ * @param defaultValue optional starting value of select input
+ */
 export default function useSelect(
   label: string,
   id: string,

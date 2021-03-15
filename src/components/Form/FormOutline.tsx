@@ -8,6 +8,7 @@ import {
 import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
+  // canvas / outline for form
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -15,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     padding: theme.spacing(4),
   },
+  // icon for form
   avatar: {
     backgroundColor: theme.palette.primary.light,
     margin: theme.spacing(2),
@@ -31,6 +33,12 @@ interface Props {
   icon?: JSX.Element;
 }
 
+/**
+ * Commonly used wrapping components and elements for form inputs
+ * @param title Title of form
+ * @param icon icon of form
+ * @param handleSubmit callback to be executed when form is submitted
+ */
 const FormOutline: React.FC<Props> = ({
   title,
   icon,

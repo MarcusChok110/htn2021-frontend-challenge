@@ -4,6 +4,9 @@ import EventPage from '../pages/events/[id]';
 import Home from '../pages/home';
 import Login from '../pages/login';
 
+/**
+ * Routes of application to be placed in a router
+ */
 const Routes: React.FC = () => {
   return (
     <Switch>

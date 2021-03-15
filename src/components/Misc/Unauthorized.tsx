@@ -1,6 +1,9 @@
 import { Typography } from '@material-ui/core';
 import React from 'react';
 
+/**
+ * Page for when user tries to access a page they don't have permissions for
+ */
 const Unauthorized: React.FC = () => {
   return (
     <>

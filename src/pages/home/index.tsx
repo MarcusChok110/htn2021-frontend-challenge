@@ -20,13 +20,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// array of options for the select input to choose from
 const filterOptions = [{ value: 'none', label: 'None' }, ...eventTitles];
 
 const Home: React.FC = () => {
   const events = useContext(EventContext);
   const [isLoggedIn] = useContext(UserContext);
   const classes = useStyles();
+
+  // search bar
   const [search, searchProps, SearchInput] = useTextField('Search Events');
+  // select input
   const [filter, filterProps, FilterSelect] = useSelect(
     'Filter Events',
     'filter-select',

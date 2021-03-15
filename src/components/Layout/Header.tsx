@@ -20,6 +20,9 @@ const useStyles = makeStyles({
   },
 });
 
+/**
+ * AppBar
+ */
 const Header: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
