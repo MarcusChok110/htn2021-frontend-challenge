@@ -17,12 +17,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
     marginBottom: theme.spacing(3),
   },
+  // truncate description
+  truncate: {
+    width: '70vw',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
 }));
 
 interface Props {
   event: TEvent;
 }
 
+/**
+ * Card for home page displaying barebones information about events
+ * @param event TEvent to be displayed
+ */
 const EventCard: React.FC<Props> = ({ event }) => {
   const { id, name, start_time, description, event_type } = event;
   const date = new Date(start_time);
@@ -41,7 +52,12 @@ const EventCard: React.FC<Props> = ({ event }) => {
               date
             )}`}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography
+            className={classes.truncate}
+            variant="body2"
+            color="textSecondary"
+            component="p"
+          >
             {description ?? null}
           </Typography>
         </CardContent>
