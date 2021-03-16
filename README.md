@@ -2,6 +2,10 @@
 
 This is a web interface made with React for Hack the North's frontend coding challenge. By default, the application is hosted locally at http://localhost:3000.
 
+## Live Demo
+
+This application is deployed at https://thawing-beach-55145.herokuapp.com/. The username and password are hard-coded to be "hackthenorth":"frontendchallenge". Feel free to experiment and play around! (And please report any issues you find to me!)
+
 ## Pages
 
 ### Home Page
