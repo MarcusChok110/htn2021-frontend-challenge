@@ -79,7 +79,7 @@ Notes:
 3. Run `npm start` to run the application in development mode.
 4. The application should now be running on http://localhost:3000. Go to the url and test out anything you want!
 
-## Writeup
+## Writeup - Part 1
 
 1. Walk us through your development process as you worked on this project. How did you plan out the structure and design of it? How did decide on the tools you've used? Did you encounter any problems? And if so, how did you solve them? Are there any areas of your code that you're particularly proud of or want to point out?
 
@@ -122,6 +122,7 @@ The folder structure is mirrors React's status as a component-based library. Eve
 - The reducers folder contains all pure reducers used for the useReducer hook in the application. I decided to handle the user state in a reducer so that it can be easily expanded upon when/if it is turned into a full authentication system as opposed to regular state.
 - The routes folder contains the routes defined by React-Router to be displayed in the pages. It is kept in its own folder so that new routes can easily be added (in other files if necessary, and then all put into the index file) when the application grows larger.
 - The types folder contains TypeScript definitions that can be shared across other files. Currently, it holds the endpoint response types.
+- The utils folder contains helpful functions that can be used across all files. In particular, the api folder contains functions related to API calls for the event data, and the helpers folder contains functions for commonly used blocks of code, such as a function to find an event by id in an array.
 
 ### Tools
 
@@ -145,3 +146,15 @@ The folder structure is mirrors React's status as a component-based library. Eve
 
 1. One of the problems I had was deciding how to incorporate the speakers' profile pictures into the event page. I wanted the screen to be consistent across all platforms, and some speakers didn't have profile pictures, so I needed to make sure that the display of the speakers were consistent. Ultimately, I decided to make the speaker's name into a hoverable element, which then displayed their profile picture if the cursor was over the name. This kept the names with and without profile pictures consistent and did not disrupt the layout of the page.
 2. Another problem I had was when making the home page. I wanted to include a short snippet of the description of each event on their card, and initially I used a method to substring the description to X length. However, the description would still be too long or too short depending on the size of the screen. I solved this problem by using css styles instead of JavaScript, namely a set width of 60vw and text-overflow set to ellipsis (among other styles) to truncate the description depending on the size of the screen.
+
+### Highlights
+
+---
+
+Firstly, I want to say that I am most proud of the way I structured my project. There are plenty of organized, modular folders, as well as JSDoc comments in a lot of the files that I feel make it very intuitive to follow. The JSDoc comments also make it easy to generate documentation should that become a concern in the future.
+
+If i had to pick a specific aspect, it would be the form control hooks in the components folder, useSelect and useTextField. These are custom components that also double as hooks, which return the value of the input field, the props, and a React functional component. One of the best practices in React is to make all your components controlled (letting React state be the "single source of truth"); that is, use state to manage the form controls instead of leaving it to vanilla HTML. Instead of creating a state value for each form component in each page, the custom hook streamlines the process by creating a component with common, predefined props, and returning the state value. This way, I can create multiple form controls on each page with less code, and without needing to define new state in my page for each component.
+
+## Writeup - Part 2
+
+2. Given additional time, how would you extend your application to become a fully functional product that thousands of hackers and the general public would use at Hackathon Global Inc.™'s next event?
