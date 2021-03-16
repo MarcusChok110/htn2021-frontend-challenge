@@ -6,7 +6,7 @@ import { LockOpen } from '@material-ui/icons';
 import useTextField from '../../components/Form/useTextField';
 import { useHistory } from 'react-router-dom';
 import isCorrectLogin from '../../utils/helpers/isCorrectLogin';
-import useSnackbar from '../../components/Form/useSnackBar';
+import useSnackbar from '../../components/Misc/useSnackBar';
 import { Button, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
