@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import FormOutline from '../../components/Form/FormOutline';
 import UserContext from '../../contexts/UserContext';
-import { userActions } from '../../utils/reducers/userReducer';
+import { userActions } from '../../reducers/userReducer';
 import { LockOpen } from '@material-ui/icons';
 import useTextField from '../../components/Form/useTextField';
 import { useHistory } from 'react-router-dom';

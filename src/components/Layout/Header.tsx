@@ -9,7 +9,7 @@ import {
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
-import { userActions } from '../../utils/reducers/userReducer';
+import { userActions } from '../../reducers/userReducer';
 import useSnackbar from '../Form/useSnackBar';
 
 // To get rid of Link's default styles on the title

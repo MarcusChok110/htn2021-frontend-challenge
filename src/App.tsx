@@ -4,7 +4,7 @@ import EventContext from './contexts/EventContext';
 import Routes from './routes';
 import { TEndpointResponse } from './types/events';
 import 'fontsource-roboto';
-import userReducer from './utils/reducers/userReducer';
+import userReducer from './reducers/userReducer';
 import UserContext from './contexts/UserContext';
 import Layout from './components/Layout';
 import { BrowserRouter } from 'react-router-dom';
