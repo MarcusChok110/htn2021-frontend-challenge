@@ -108,7 +108,7 @@ src
     └───helpers
 ```
 
-The folder structure is mirrors React's status as a component-based library. Everything is kept modular so that it's easier to expand and test if needs arise in the future. In addition, I believe React programmers will find the structure intuitive because features of React are mapped to their corresponding folders, such as contexts for the Context API, reducers for functions using the useReducer hook, etc.
+The folder structure is mirrors React's status as a component-based library. Everything is kept modular so that it's easier to expand and test if needs arise in the future. In addition, I believe React programmers will find the structure intuitive because features of React are mapped to their corresponding folders, such as contexts for the Context API, reducer functions for the useReducer hook, etc.
 
 - Since React is component based, I made a components folder for reusable components that can appear across multiple pages.
   - The Form folder contain all components that relate to form controls, such as a TextField and Select inputs.
@@ -158,3 +158,14 @@ If i had to pick a specific aspect, it would be the form control hooks in the co
 ## Writeup - Part 2
 
 2. Given additional time, how would you extend your application to become a fully functional product that thousands of hackers and the general public would use at Hackathon Global Inc.™'s next event?
+
+Firstly, I would have to replace the hard-coded authentication system with an actual authentication system. A register page would need to be created, and most likely that involves a backend server to process data, store it in a database, and return the user details. This would most likely be stored in an http-only cookie to persist user logins through refreshes as well.
+
+I would most likely replace the useContext / useReducer combination with Redux (Toolkit), as thousands of hackers and events with many pages means that state will grow to be more and more complex. Redux would facilitate state management and allow me to define asynchronous actions, something not built into vanilla React, and thus make managing api calls and user logins easier.
+
+I would also most likely refactor the project into a Next.js project instead of React. Since this is a hackathon reaching thousands of people, server-side rendering would be beneficial for Search Engine Optimization.
+
+Moreover, I would create a custom Material-UI theme to give the application more of an identity in line with the Hackathon Global Inc.™ brand. Currently, I'm using the default theme of Material-UI, but in the long term, it would be better to create a distinctive theme that people can recognize, and it would also be better for marketing.
+
+Lastly, I would create different views for mobile and desktop. This could be in the form of a mobile application (perhaps using React Native for cross-platform development)
+or simply different layouts for mobile and desktop. A lot of big applications, such as YouTube and Facebook, have different styles depending on the device used to view their website. I believe the best user experience would be obtained by creating a layout specifically for desktop and another one specifically for mobile, rather than trying to make one layout responsive for both.
